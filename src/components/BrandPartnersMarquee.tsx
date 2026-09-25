@@ -84,14 +84,14 @@ export const BrandPartnersMarquee: React.FC = () => {
           {BRANDS.map((brand, idx) => (
             <div
               key={idx}
-              className="bg-zinc-900/90 rounded-2xl border-2 border-zinc-800 hover:border-brand-pink p-3.5 sm:p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,46,147,0.25)] group"
+              className="bg-black rounded-2xl border-2 border-zinc-800/90 hover:border-brand-pink p-3.5 sm:p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,46,147,0.3)] group"
             >
-              {/* Clean White Logo Container for maximum crispness */}
-              <div className="w-full h-24 sm:h-28 bg-white rounded-xl p-3 flex items-center justify-center border border-white/10 group-hover:scale-[1.02] transition-transform duration-300 overflow-hidden shadow-inner">
+              {/* Logo Container con fondo negro integrado (sin recuadros ni bordes blancos) */}
+              <div className="w-full h-24 sm:h-28 bg-black flex items-center justify-center p-2 rounded-xl">
                 <img
                   src={brand.logo}
                   alt={brand.name}
-                  className="max-h-16 sm:max-h-20 max-w-[90%] object-contain filter group-hover:scale-105 transition-transform duration-300"
+                  className="max-h-20 sm:max-h-22 max-w-[95%] object-contain mix-blend-screen group-hover:scale-110 transition-transform duration-300"
                   loading="lazy"
                 />
               </div>

@@ -33,12 +33,20 @@ export const TheGoldenHook: React.FC<TheGoldenHookProps> = ({ onOpenBooking }) =
           {/* Card 1: La Vía Común y Frustrante */}
           <div className="bg-white rounded-3xl border-3 border-brand-black p-6 sm:p-8 shadow-[6px_6px_0px_#0F0F12] relative flex flex-col justify-between">
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-full bg-rose-100 border-2 border-brand-black flex items-center justify-center text-rose-600 font-black">
+              {/* Top Row Pill */}
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span className="text-xs font-bold uppercase text-zinc-500 tracking-wider">La Vía Tradicional</span>
+                <span className="inline-flex items-center gap-1 bg-zinc-100 text-zinc-600 text-[10px] sm:text-[11px] font-bold uppercase px-3 py-1 rounded-full border border-zinc-300">
+                  Sin Método
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-rose-100 border-2 border-brand-black flex items-center justify-center text-rose-600 font-black shrink-0">
                   <XCircle className="w-6 h-6" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase text-zinc-500">El camino habitual</span>
+                  <span className="text-xs font-bold uppercase text-zinc-500 block">El camino habitual</span>
                   <h3 className="font-display font-black text-xl text-brand-black">Hacerlo sola y a ciegas</h3>
                 </div>
               </div>
@@ -74,18 +82,21 @@ export const TheGoldenHook: React.FC<TheGoldenHookProps> = ({ onOpenBooking }) =
 
           {/* Card 2: El Método "Tu Era Creator" */}
           <div className="bg-brand-yellow-pale rounded-3xl border-3 border-brand-black p-6 sm:p-8 shadow-[8px_8px_0px_#FF2E93] relative flex flex-col justify-between overflow-hidden">
-            {/* Top Badge */}
-            <div className="absolute top-4 right-4 bg-brand-pink text-white text-[11px] font-black uppercase px-3 py-1 rounded-full border-2 border-brand-black shadow-[2px_2px_0px_#0F0F12]">
-              ✨ La Experiencia Presencial
-            </div>
-
             <div>
-              <div className="flex items-center gap-2 mb-6">
-                <div className="w-10 h-10 rounded-full bg-brand-yellow border-2 border-brand-black flex items-center justify-center text-brand-black font-black">
+              {/* Top Row Pill (Flujo natural sin superposiciones en móvil) */}
+              <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                <span className="text-xs font-black uppercase text-brand-pink tracking-wider">El Método Acelerador</span>
+                <span className="inline-flex items-center gap-1 bg-brand-pink text-white text-[10px] sm:text-[11px] font-black uppercase px-3 py-1 rounded-full border-2 border-brand-black shadow-[2px_2px_0px_#0F0F12]">
+                  ✨ La Experiencia Presencial
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3 mb-6">
+                <div className="w-10 h-10 rounded-full bg-brand-yellow border-2 border-brand-black flex items-center justify-center text-brand-black font-black shrink-0">
                   <Zap className="w-6 h-6 fill-current text-brand-black" />
                 </div>
                 <div>
-                  <span className="text-xs font-bold uppercase text-brand-pink">Workshop "Tu era Creator"</span>
+                  <span className="text-xs font-bold uppercase text-brand-pink block">Workshop "Tu era Creator"</span>
                   <h3 className="font-display font-black text-xl text-brand-black">El Acelerador en Hotel Costanero</h3>
                 </div>
               </div>

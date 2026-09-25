@@ -12,23 +12,20 @@ import { AboutMaria } from './components/AboutMaria';
 import { PricingPass } from './components/PricingPass';
 import { FaqAccordion } from './components/FaqAccordion';
 import { CheckoutModal } from './components/CheckoutModal';
+import { AdminLeadsModal } from './components/AdminLeadsModal';
 import { StickyMobileBar } from './components/StickyMobileBar';
 import { Footer } from './components/Footer';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isAdminOpen, setIsAdminOpen] = useState(false);
 
-  // Pre-configured WhatsApp message with full details
-  const handleOpenWhatsApp = () => {
-    const message = encodeURIComponent(
-      'Hola María!! 💖✨ Vi la web del workshop "Tu era Creator" y quiero reservar uno de los últimos lugares con el precio especial de USD 90 en el Hotel Costanero. ¿Cómo coordinamos el pago/reserva? ✨'
-    );
-    window.open(`https://wa.me/59899000000?text=${message}`, '_blank');
-  };
+  const WHATSAPP_NUMBER = '59899000000';
+  const MERCADO_PAGO_URL = 'https://link.mercadopago.com.uy/soymariab';
 
-  // Mercado Pago Uruguay checkout action
-  const handleOpenMercadoPago = () => {
-    window.open('https://link.mercadopago.com.uy/soymariab', '_blank');
+  // Generic direct WhatsApp link (if triggered before filling form, opens modal first to capture lead)
+  const handleOpenBooking = () => {
+    setIsModalOpen(true);
   };
 
   return (
@@ -37,21 +34,21 @@ export function App() {
       <TopUrgencyBanner />
 
       {/* 2. Glassmorphism navigation */}
-      <Navbar onOpenBooking={() => setIsModalOpen(true)} />
+      <Navbar onOpenBooking={handleOpenBooking} />
 
       {/* Main Content Flow */}
       <main className="flex-1">
         {/* 3. Hero Section with sticker badges & Maria's photo cutout */}
         <HeroSection
-          onOpenBooking={() => setIsModalOpen(true)}
-          onOpenWhatsApp={handleOpenWhatsApp}
+          onOpenBooking={handleOpenBooking}
+          onOpenWhatsApp={handleOpenBooking}
         />
 
         {/* 4. 6 Confirmed Brand Partners */}
         <BrandPartnersMarquee />
 
         {/* 5. The Golden Hook: Difference from ordinary courses */}
-        <TheGoldenHook onOpenBooking={() => setIsModalOpen(true)} />
+        <TheGoldenHook onOpenBooking={handleOpenBooking} />
 
         {/* 6. The 6 Pillars of the Workshop */}
         <CurriculumPillars />
@@ -66,31 +63,37 @@ export function App() {
         <ObjectionsFilter />
 
         {/* 10. Meet Maria (@soymariab) Storytelling */}
-        <AboutMaria onOpenBooking={() => setIsModalOpen(true)} />
+        <AboutMaria onOpenBooking={handleOpenBooking} />
 
         {/* 11. Main Pricing & VIP All-Access Ticket */}
         <PricingPass
-          onOpenBooking={() => setIsModalOpen(true)}
-          onOpenWhatsApp={handleOpenWhatsApp}
-          onOpenMercadoPago={handleOpenMercadoPago}
+          onOpenBooking={handleOpenBooking}
+          onOpenWhatsApp={handleOpenBooking}
+          onOpenMercadoPago={handleOpenBooking}
         />
 
         {/* 12. Dynamic FAQ Accordion */}
-        <FaqAccordion onOpenWhatsApp={handleOpenWhatsApp} />
+        <FaqAccordion onOpenWhatsApp={handleOpenBooking} />
       </main>
 
       {/* 13. Footer with copyright & credits */}
-      <Footer />
+      <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
 
       {/* 14. Mobile Sticky Bottom Conversion Bar */}
-      <StickyMobileBar onOpenBooking={() => setIsModalOpen(true)} />
+      <StickyMobileBar onOpenBooking={handleOpenBooking} />
 
-      {/* 15. Interactive Checkout & Booking Modal */}
+      {/* 15. High-Converting Checkout Modal with Lead Capture */}
       <CheckoutModal
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
-        onSelectWhatsApp={handleOpenWhatsApp}
-        onSelectMercadoPago={handleOpenMercadoPago}
+        defaultWhatsAppNumber={WHATSAPP_NUMBER}
+        defaultMercadoPagoUrl={MERCADO_PAGO_URL}
+      />
+
+      {/* 16. Admin Leads & Database Modal */}
+      <AdminLeadsModal
+        isOpen={isAdminOpen}
+        onClose={() => setIsAdminOpen(false)}
       />
     </div>
   );

@@ -14,7 +14,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   isOpen,
   onClose,
   defaultWhatsAppNumber = '59895970988',
-  defaultMercadoPagoUrl = 'https://link.mercadopago.com.uy/soymariab',
+  defaultMercadoPagoUrl = 'https://mpago.la/2qoASSL',
 }) => {
   const [formData, setFormData] = useState({
     fullName: '',

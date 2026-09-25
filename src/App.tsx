@@ -29,7 +29,7 @@ export function App() {
   }, []);
 
   const WHATSAPP_NUMBER = '59895970988';
-  const MERCADO_PAGO_URL = 'https://link.mercadopago.com.uy/soymariab';
+  const MERCADO_PAGO_URL = 'https://mpago.la/2qoASSL';
 
   // Generic direct WhatsApp link (if triggered before filling form, opens modal first to capture lead)
   const handleOpenBooking = () => {

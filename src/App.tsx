@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { TopUrgencyBanner } from './components/TopUrgencyBanner';
 import { Navbar } from './components/Navbar';
 import { HeroSection } from './components/HeroSection';
@@ -19,6 +19,14 @@ import { Footer } from './components/Footer';
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
+
+  // Private secret parameter to open leads modal (?admin=soymariab)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('admin') === 'soymariab') {
+      setIsAdminOpen(true);
+    }
+  }, []);
 
   const WHATSAPP_NUMBER = '59895970988';
   const MERCADO_PAGO_URL = 'https://link.mercadopago.com.uy/soymariab';
@@ -77,7 +85,7 @@ export function App() {
       </main>
 
       {/* 13. Footer with copyright & credits */}
-      <Footer onOpenAdmin={() => setIsAdminOpen(true)} />
+      <Footer />
 
       {/* 14. Mobile Sticky Bottom Conversion Bar */}
       <StickyMobileBar onOpenBooking={handleOpenBooking} />

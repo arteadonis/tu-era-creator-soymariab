@@ -30,14 +30,23 @@ export const saveLead = async (lead: Omit<LeadData, 'id' | 'createdAt'>): Promis
     console.warn('Could not save lead to localStorage', err);
   }
 
-  // 2. Fire webhook in background if configured
+  // 2. Fire webhook in background if configured (Google Sheets Apps Script / Make / Zapier)
   if (WEBHOOK_URL) {
     try {
       await fetch(WEBHOOK_URL, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(newLead),
-        mode: 'no-cors', // Supports standard Google Apps Script webhooks
+        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+        body: JSON.stringify({
+          id: newLead.id,
+          fullName: newLead.fullName,
+          instagram: newLead.instagram,
+          email: newLead.email,
+          phone: newLead.phone,
+          paymentMethod: newLead.paymentMethod,
+          createdAt: newLead.createdAt,
+          dateFormatted: new Date().toLocaleString('es-UY', { timeZone: 'America/Montevideo' }),
+        }),
+        mode: 'no-cors', // Essential for Google Apps Script redirects
       });
     } catch (err) {
       console.warn('Webhook dispatch failed', err);

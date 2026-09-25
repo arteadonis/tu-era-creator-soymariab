@@ -331,7 +331,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                     {/* Desde otros bancos USD */}
                     <div className="flex items-center justify-between pt-1.5 border-t border-zinc-100">
                       <div>
-                        <span className="text-[10px] text-zinc-500 font-semibold block">Desde otros bancos (BROU/Itaú/etc):</span>
+                        <span className="text-[10px] text-zinc-500 font-semibold block">Desde otros bancos:</span>
                         <span className="font-mono font-bold text-xs text-brand-black">0060005207717616</span>
                       </div>
                       <button

@@ -142,7 +142,7 @@ export const PricingPass: React.FC<PricingPassProps> = ({
           <div className="mt-6 flex flex-wrap items-center justify-center gap-4 text-[11px] text-zinc-400 font-semibold">
             <span className="flex items-center gap-1">
               <ShieldCheck className="w-4 h-4 text-emerald-400" />
-              Transferencias BROU, Itaú, Prex y tarjetas
+              Transferencias Santander, otros bancos y tarjetas
             </span>
             <span>·</span>
             <span>Acreditación y reserva inmediata</span>

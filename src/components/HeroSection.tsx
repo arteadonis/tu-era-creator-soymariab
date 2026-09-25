@@ -173,7 +173,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onOpenW
             <div className="flex items-center gap-4 mt-5 text-[11px] sm:text-xs text-zinc-600 font-semibold flex-wrap justify-center lg:justify-start">
               <span className="flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                Pago 100% seguro (Mercado Pago / BROU)
+                Pago 100% seguro (Mercado Pago / Santander)
               </span>
               <span className="flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />

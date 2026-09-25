@@ -4,25 +4,37 @@ import { InstagramIcon } from './icons/InstagramIcon';
 
 const REELS = [
   {
-    image: '/assets/reel-video-1.png',
-    title: '¿Quieres crear contenido y trabajar con marcas?',
-    caption: 'Todo lo que necesitas saber para perder la pena, crear videos con tu celular y conseguir marcas reales. ✨',
-    likes: '1,420',
+    video: '/assets/reel-1.mp4',
+    poster: '/assets/reel-1-poster.jpg',
+    instagramUrl: 'https://www.instagram.com/reel/DcPZIduO3ua/',
+    badge: 'Gastronomía & Experiencias',
+    title: 'Experiencias de Marca & Gastronomía',
+    caption: 'Aprenderás a crear contenido inmersivo que hace que todos quieran vivir la experiencia. 🍣✨',
+    likes: '2.4K',
+    comments: '142',
     audio: 'Audio original · @soymariab'
   },
   {
-    image: '/assets/reel-video-2.png',
-    title: 'Monetizar tus redes y cerrar acuerdos',
-    caption: 'El contenido que vende no necesita millones de seguidores. Necesita estrategia y seguridad. 💖',
-    likes: '2,890',
+    video: '/assets/reel-2.mp4',
+    poster: '/assets/reel-2-poster.jpg',
+    instagramUrl: 'https://www.instagram.com/reel/Dbg5rzqOM15/',
+    badge: 'Turismo & Lifestyle',
+    title: 'Turismo, Bodegas & Viajes',
+    caption: 'Historias que transmiten sensaciones y abren puertas a colaboraciones turísticas y hoteleras. 🍷🍇',
+    likes: '3.8K',
+    comments: '215',
     audio: 'Tendencia Creator · Montevideo'
   },
   {
-    image: '/assets/workshop-board.png',
-    title: 'Anuncio Oficial: Tu era Creator',
-    caption: '¡Por fin revelado! Nuestro workshop presencial en Montevideo para dar el gran salto digital. 🎀',
-    likes: '1,150',
-    audio: 'Tu era Creator · 24 Oct'
+    video: '/assets/reel-3.mp4',
+    poster: '/assets/reel-3-poster.jpg',
+    instagramUrl: 'https://www.instagram.com/reel/DRXlhgUDoY-/',
+    badge: 'Belleza & UGC Review',
+    title: 'Review UGC & Campañas de Belleza',
+    caption: 'Demostración de productos multifuncionales y storytelling genuino que genera ventas reales. 💁‍♀️✨',
+    likes: '4.2K',
+    comments: '318',
+    audio: '@celestra.uy · Colaboración'
   }
 ];
 
@@ -54,9 +66,12 @@ export const ReelsShowcase: React.FC = () => {
         {/* Reels Mockup Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 max-w-5xl mx-auto">
           {REELS.map((reel, idx) => (
-            <div
+            <a
               key={idx}
-              className="bg-zinc-900 rounded-[32px] border-3 border-zinc-800 hover:border-brand-pink p-3 sm:p-4 shadow-[6px_6px_0px_rgba(255,46,147,0.3)] transition-all duration-300 hover:-translate-y-2 flex flex-col group relative overflow-hidden"
+              href={reel.instagramUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="bg-zinc-900 rounded-[32px] border-3 border-zinc-800 hover:border-brand-pink p-3 sm:p-4 shadow-[6px_6px_0px_rgba(255,46,147,0.3)] transition-all duration-300 hover:-translate-y-2 flex flex-col group relative overflow-hidden cursor-pointer"
             >
               {/* Phone Speaker Notch */}
               <div className="w-20 h-3.5 bg-zinc-800 rounded-full mx-auto mb-3 flex items-center justify-center">
@@ -65,9 +80,15 @@ export const ReelsShowcase: React.FC = () => {
 
               {/* Reel Video Frame */}
               <div className="relative aspect-[9/16] rounded-2xl overflow-hidden bg-black border border-zinc-700/60 flex items-center justify-center">
-                <img
-                  src={reel.image}
-                  alt={reel.title}
+                {/* HTML5 Autoplay Looping Video with Poster fallback */}
+                <video
+                  src={reel.video}
+                  poster={reel.poster}
+                  autoPlay
+                  loop
+                  muted
+                  playsInline
+                  preload="metadata"
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
 
@@ -77,7 +98,7 @@ export const ReelsShowcase: React.FC = () => {
                 {/* Top Instagram Overlay */}
                 <div className="absolute top-3 left-3 right-3 flex items-center justify-between text-white text-xs font-bold z-10">
                   <div className="flex items-center gap-1.5 bg-black/60 backdrop-blur-md px-2.5 py-1 rounded-full border border-white/10">
-                    <span className="w-2 h-2 rounded-full bg-brand-pink" />
+                    <span className="w-2 h-2 rounded-full bg-brand-pink animate-pulse" />
                     <span>Reels</span>
                   </div>
                   <div className="bg-black/60 backdrop-blur-md p-1.5 rounded-full border border-white/10">
@@ -85,11 +106,15 @@ export const ReelsShowcase: React.FC = () => {
                   </div>
                 </div>
 
-                {/* Play Button Simulation */}
-                <div className="absolute inset-0 flex items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity">
-                  <div className="w-14 h-14 rounded-full bg-brand-pink/90 text-white flex items-center justify-center border-2 border-white shadow-lg">
+                {/* Hover Action Overlay: Watch on Instagram */}
+                <div className="absolute inset-0 flex flex-col items-center justify-center pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity bg-black/40 backdrop-blur-[2px] z-20">
+                  <div className="w-14 h-14 rounded-full bg-brand-pink text-white flex items-center justify-center border-2 border-white shadow-xl mb-2 group-hover:scale-110 transition-transform">
                     <Play className="w-6 h-6 fill-current ml-0.5" />
                   </div>
+                  <span className="text-xs font-black text-white bg-black/80 px-3 py-1 rounded-full border border-white/30 flex items-center gap-1.5 shadow-md">
+                    <InstagramIcon className="w-3.5 h-3.5" />
+                    Ver reel en Instagram ↗
+                  </span>
                 </div>
 
                 {/* Right Side Social Actions */}
@@ -105,7 +130,7 @@ export const ReelsShowcase: React.FC = () => {
                     <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20">
                       <MessageCircle className="w-4 h-4" />
                     </div>
-                    <span className="text-[10px]">108</span>
+                    <span className="text-[10px]">{reel.comments}</span>
                   </div>
 
                   <div className="w-8 h-8 rounded-full bg-black/50 backdrop-blur-md flex items-center justify-center border border-white/20">
@@ -134,19 +159,25 @@ export const ReelsShowcase: React.FC = () => {
                 </div>
               </div>
 
-              {/* Bottom Card Label */}
-              <div className="mt-3 text-center">
-                <span className="text-xs font-bold text-zinc-300 group-hover:text-brand-yellow transition-colors">
+              {/* Bottom Card Meta & Badge */}
+              <div className="mt-3.5 flex flex-col gap-1 text-center">
+                <span className="text-xs font-extrabold text-brand-pink uppercase tracking-wider">
+                  {reel.badge}
+                </span>
+                <span className="text-sm font-bold text-white group-hover:text-brand-yellow transition-colors leading-tight">
                   {reel.title}
                 </span>
+                <span className="text-[11px] text-zinc-400 font-medium mt-0.5 group-hover:text-zinc-200 transition-colors">
+                  Toca para abrir en Instagram ↗
+                </span>
               </div>
-            </div>
+            </a>
           ))}
         </div>
 
         {/* Footnote */}
         <div className="mt-10 text-center text-xs text-zinc-400">
-          📍 Grabado y producido en Montevideo con smartphone estándar. Aprenderás las mismas configuraciones en el taller.
+          📍 Grabado y producido en Uruguay con smartphone estándar. Aprenderás las mismas configuraciones en el taller.
         </div>
 
       </div>

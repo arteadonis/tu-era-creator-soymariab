@@ -196,7 +196,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onOpenW
                 {/* Photo Frame */}
                 <div className="relative aspect-[4/5] rounded-2xl overflow-hidden border-2 border-brand-black mb-4 bg-zinc-100 group">
                   <img
-                    src="/assets/maria-hero.jpg"
+                    src="/assets/maria-landing.jpeg"
                     alt="María B - Creadora de contenido e influencer del workshop Tu Era Creator"
                     className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                     loading="eager"

@@ -8,7 +8,7 @@ const FAQS = [
   },
   {
     q: '¿Cómo funciona exactamente la primera colaboración garantizada?',
-    a: 'En esta edición contamos con 6 marcas aliadas confirmadas en rubros como skincare, moda, accesorios y gastronomía. Durante la jornada trabajaremos con un brief real y saldrás del workshop con una asignación activa para realizar tu primera colaboración de contenido por intercambio (recibiendo productos o experiencias de la marca), ideal para romper el hielo y armar tu primer portafolio profesional.'
+    a: 'En esta edición contamos con 6 marcas aliadas confirmadas: Óptica Censa, Ron Biocosmética, Dulce Sofía, Liss Pro Tect, Pura Vida Accesorios y Biogreen (abarcando cuidado capilar, óptica, skincare botánico, fragancias, moda y dulces artesanales). Durante la jornada trabajaremos con sus briefs reales y saldrás del workshop con una asignación activa para realizar tu primera colaboración de contenido por intercambio (recibiendo productos o experiencias reales de la marca), ideal para romper el hielo y armar tu primer portafolio profesional.'
   },
   {
     q: '¿Qué tengo que llevar al Hotel Costanero?',
@@ -16,7 +16,7 @@ const FAQS = [
   },
   {
     q: '¿Qué métodos de pago tienen habilitados?',
-    a: 'Aceptamos Mercado Pago Uruguay (tarjetas de crédito en cuotas y débito) y transferencias bancarias directas (BROU, Itaú, Prex). Si necesitas abonar por transferencia, puedes escribirnos directamente por WhatsApp y te enviamos los datos de cuenta al instante.'
+    a: 'Aceptamos Mercado Pago Uruguay (tarjetas de crédito en cuotas y débito) y transferencias bancarias directas en UYU o USD (Banco Santander y transferencias interbancarias desde cualquier banco uruguayo). También puedes coordinar tu cupo directamente por WhatsApp.'
   },
   {
     q: '¿Dónde es exactamente y en qué horario?',

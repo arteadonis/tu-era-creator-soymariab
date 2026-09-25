@@ -1,13 +1,57 @@
 import React from 'react';
-import { CheckCircle, Handshake } from 'lucide-react';
+import { CheckCircle, Handshake, Sparkles } from 'lucide-react';
 
-const BRANDS = [
-  { name: 'DERMA GLOW LAB', category: 'Skincare & Belleza', icon: '🧴' },
-  { name: 'URBAN CHIC STUDIO', category: 'Moda & Tendencias', icon: '👗' },
-  { name: 'AUREA JEWELS', category: 'Joyería & Accesorios', icon: '💍' },
-  { name: 'ROASTERS & CO. MVD', category: 'Café & Gastronomía', icon: '☕' },
-  { name: 'VITA BOTANICS', category: 'Cosmética Natural', icon: '🌿' },
-  { name: 'COSTANERO LIFESTYLE', category: 'Hospitality & Wellness', icon: '🏨' },
+interface BrandItem {
+  name: string;
+  category: string;
+  productType: string;
+  logo: string;
+  tag: string;
+}
+
+const BRANDS: BrandItem[] = [
+  {
+    name: 'Óptica Censa',
+    category: 'Salud Visual & Moda',
+    productType: 'Lentes y armazones de tendencia',
+    logo: '/assets/optica-censa.png',
+    tag: 'Accesorios & Estilo',
+  },
+  {
+    name: 'Ron Biocosmética',
+    category: 'Biocosmética Natural',
+    productType: 'Cuidado facial y skincare botánico',
+    logo: '/assets/ron-biocosmetica.png',
+    tag: 'Skincare Consciente',
+  },
+  {
+    name: 'Dulce Sofía',
+    category: 'Gastronomía Dulce',
+    productType: 'Galletas y repostería artesanal',
+    logo: '/assets/dulce-sofia.png',
+    tag: 'Dulces & Treats',
+  },
+  {
+    name: 'Liss Pro Tect',
+    category: 'Cuidado Capilar',
+    productType: 'Productos de alisado progresivo',
+    logo: '/assets/liss-pro-tect.png',
+    tag: 'Haircare Profesional',
+  },
+  {
+    name: 'Pura Vida Accesorios',
+    category: 'Moda & Complementos',
+    productType: 'Accesorios y joyería de diseño',
+    logo: '/assets/pura-vida-accesorios.png',
+    tag: 'Estilo & Tendencias',
+  },
+  {
+    name: 'Biogreen',
+    category: 'Aromas & Bienestar',
+    productType: 'Aguas perfumadas y aromatizantes',
+    logo: '/assets/biogreen.png',
+    tag: 'Fragancias de Hogar',
+  },
 ];
 
 export const BrandPartnersMarquee: React.FC = () => {
@@ -27,42 +71,62 @@ export const BrandPartnersMarquee: React.FC = () => {
           </div>
 
           <h2 className="font-display font-black text-2xl sm:text-4xl md:text-5xl uppercase tracking-tight text-white mb-4">
-            Ya tenemos <span className="text-brand-pink">6 marcas confirmadas</span> para ti
+            Conoce las <span className="text-brand-pink">6 marcas aliadas</span> confirmadas
           </h2>
 
           <p className="text-sm sm:text-base text-zinc-300 font-medium leading-relaxed">
-            Olvídate de mandar 50 correos a ciegas para que nadie responda. En este workshop, las marcas ya están en la mesa. <strong>Saldrás del evento con un brief real asignado para realizar tu primera colaboración de contenido por intercambio de productos o experiencias con marcas reales.</strong>
+            Olvídate de mandar 50 mensajes a ciegas esperando que alguien responda. En este workshop, las marcas ya están en la mesa. <strong>Saldrás del evento con una asignación activa y un brief real para realizar tu primera colaboración de contenido por intercambio (productos y experiencias reales).</strong>
           </p>
         </div>
 
-        {/* Brands Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 mb-10">
+        {/* Brands Grid with Real Logos */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3.5 sm:gap-4 mb-10">
           {BRANDS.map((brand, idx) => (
             <div
               key={idx}
-              className="bg-zinc-900/90 rounded-2xl border-2 border-zinc-800 hover:border-brand-pink p-4 sm:p-5 flex flex-col items-center justify-center text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_8px_25px_rgba(255,46,147,0.25)] group"
+              className="bg-zinc-900/90 rounded-2xl border-2 border-zinc-800 hover:border-brand-pink p-3.5 sm:p-4 flex flex-col items-center justify-between text-center transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_10px_30px_rgba(255,46,147,0.25)] group"
             >
-              <div className="text-3xl sm:text-4xl mb-3 group-hover:scale-110 transition-transform">
-                {brand.icon}
+              {/* Clean White Logo Container for maximum crispness */}
+              <div className="w-full h-24 sm:h-28 bg-white rounded-xl p-3 flex items-center justify-center border border-white/10 group-hover:scale-[1.02] transition-transform duration-300 overflow-hidden shadow-inner">
+                <img
+                  src={brand.logo}
+                  alt={brand.name}
+                  className="max-h-16 sm:max-h-20 max-w-[90%] object-contain filter group-hover:scale-105 transition-transform duration-300"
+                  loading="lazy"
+                />
               </div>
-              <h4 className="font-display font-black text-xs sm:text-sm text-white tracking-wide uppercase leading-tight mb-1">
-                {brand.name}
-              </h4>
-              <span className="text-[10px] sm:text-xs font-semibold text-brand-yellow/80">
-                {brand.category}
-              </span>
-              <div className="mt-3 inline-flex items-center gap-1 text-[9px] uppercase font-bold text-zinc-400 bg-zinc-800/80 px-2 py-0.5 rounded-full">
-                <CheckCircle className="w-2.5 h-2.5 text-emerald-400" />
-                Confirmada
+
+              {/* Brand Info */}
+              <div className="w-full mt-3 flex-1 flex flex-col justify-between">
+                <div>
+                  <h3 className="font-display font-black text-xs sm:text-sm text-white tracking-wide uppercase leading-tight mb-1">
+                    {brand.name}
+                  </h3>
+                  <span className="block text-[11px] font-bold text-brand-yellow">
+                    {brand.category}
+                  </span>
+                  <p className="text-[10px] text-zinc-400 mt-1 line-clamp-2 leading-snug">
+                    {brand.productType}
+                  </p>
+                </div>
+
+                <div className="mt-3 pt-2 border-t border-zinc-800/80 inline-flex items-center justify-center gap-1 text-[9px] uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
+                  <CheckCircle className="w-2.5 h-2.5 text-emerald-400" />
+                  Confirmada
+                </div>
               </div>
             </div>
           ))}
         </div>
 
         {/* Reassurance Callout Box */}
-        <div className="max-w-2xl mx-auto bg-gradient-to-r from-brand-pink/20 via-zinc-900 to-brand-yellow/20 border-2 border-zinc-700 rounded-2xl p-4 sm:p-6 text-center">
-          <p className="text-xs sm:text-sm text-zinc-200 font-semibold leading-snug">
-            ✨ <strong className="text-white">¿Por qué hacemos esto?</strong> Porque sabemos que el paso más difícil de un creador es conseguir que la primera marca confíe en ti. Nosotros derribamos esa barrera desde el día uno.
+        <div className="max-w-3xl mx-auto bg-gradient-to-r from-brand-pink/20 via-zinc-900 to-brand-yellow/20 border-2 border-zinc-700 rounded-2xl p-4 sm:p-6 text-center">
+          <div className="inline-flex items-center gap-1.5 text-brand-yellow text-xs font-black uppercase tracking-wider mb-1">
+            <Sparkles className="w-3.5 h-3.5" />
+            <span>¿Por qué hacemos esto?</span>
+          </div>
+          <p className="text-xs sm:text-sm text-zinc-200 font-medium leading-relaxed">
+            Porque sabemos que el paso más difícil de un creador es conseguir que <strong className="text-white">la primera marca confíe en ti</strong>. En <strong>Tu era Creator</strong> derribamos esa barrera: trabajas con briefs reales de marcas consolidadas en Uruguay para inaugurar tu portafolio profesional desde el día uno.
           </p>
         </div>
 

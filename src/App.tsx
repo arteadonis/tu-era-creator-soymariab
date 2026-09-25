@@ -20,7 +20,7 @@ export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isAdminOpen, setIsAdminOpen] = useState(false);
 
-  const WHATSAPP_NUMBER = '59899000000';
+  const WHATSAPP_NUMBER = '59895970988';
   const MERCADO_PAGO_URL = 'https://link.mercadopago.com.uy/soymariab';
 
   // Generic direct WhatsApp link (if triggered before filling form, opens modal first to capture lead)

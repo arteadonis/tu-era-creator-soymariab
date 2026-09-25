@@ -3,7 +3,7 @@ import { MapPin, Calendar, Clock, Coffee, Users, Camera, Sparkles, Building2 } f
 
 export const VenueExperience: React.FC = () => {
   return (
-    <section id="experiencia" className="py-16 sm:py-24 bg-[#FAF8F5] relative overflow-hidden border-t-3 border-brand-black">
+    <section id="lugar" className="py-16 sm:py-24 bg-[#FAF8F5] relative overflow-hidden border-t-3 border-brand-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header */}

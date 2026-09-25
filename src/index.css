@@ -19,7 +19,11 @@
   body {
     background-color: #FAF8F5;
     color: #0F0F12;
-    font-family: 'League Spartan', 'Plus Jakarta Sans', system-ui, sans-serif;
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'League Spartan', 'Plus Jakarta Sans', sans-serif;
   }
 }
 

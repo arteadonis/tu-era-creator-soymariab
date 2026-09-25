@@ -38,25 +38,29 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
           </div>
         </a>
 
-        {/* Desktop Nav Items (without calculadora) */}
-        <div className="hidden lg:flex items-center gap-7 font-bold text-sm tracking-wide text-brand-black">
+        {/* Desktop / Tablet Nav Items (Single line: Beneficios - Marcas - Temario - Lugar - Preguntas) */}
+        <div className="hidden md:flex items-center gap-5 lg:gap-7 font-display font-extrabold text-sm tracking-wide text-brand-black">
           <a href="#beneficios" className="hover:text-brand-pink transition-colors">Beneficios</a>
-          <a href="#marcas" className="hover:text-brand-pink transition-colors">Marcas Aliadas</a>
+          <span className="text-zinc-300 select-none">·</span>
+          <a href="#marcas" className="hover:text-brand-pink transition-colors">Marcas</a>
+          <span className="text-zinc-300 select-none">·</span>
           <a href="#temario" className="hover:text-brand-pink transition-colors">Temario</a>
-          <a href="#experiencia" className="hover:text-brand-pink transition-colors">Hotel Costanero</a>
+          <span className="text-zinc-300 select-none">·</span>
+          <a href="#lugar" className="hover:text-brand-pink transition-colors">Lugar</a>
+          <span className="text-zinc-300 select-none">·</span>
           <a href="#faq" className="hover:text-brand-pink transition-colors">Preguntas</a>
         </div>
 
         {/* Event Date Pill & Quick CTA */}
         <div className="hidden sm:flex items-center gap-3">
-          <div className="hidden md:flex flex-col text-right">
+          <div className="hidden xl:flex flex-col text-right">
             <span className="text-[11px] font-black uppercase text-brand-pink tracking-wider">24 OCTUBRE · MONTEVIDEO</span>
             <span className="text-xs font-bold text-zinc-600">13:00 a 17:00 h</span>
           </div>
 
           <button
             onClick={handleCtaClick}
-            className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-brand-pink text-white font-black text-sm tracking-wide border-2 border-brand-black shadow-[3px_3px_0px_#0F0F12] hover:shadow-[1px_1px_0px_#0F0F12] hover:translate-x-[2px] hover:translate-y-[2px] active:translate-x-[3px] active:translate-y-[3px] transition-all"
+            className="relative inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-full bg-brand-pink text-white font-display font-black text-sm tracking-wide border-2 border-brand-black shadow-[3px_3px_0px_#0F0F12] hover:shadow-[1px_1px_0px_#0F0F12] hover:translate-x-[2px] hover:translate-y-[2px] active:translate-x-[3px] active:translate-y-[3px] transition-all"
           >
             <span>Reservar Lugar · $90</span>
             <Sparkles className="w-4 h-4 fill-brand-yellow text-brand-yellow" />
@@ -83,19 +87,19 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
 
       {/* Mobile Menu Dropdown */}
       {mobileMenuOpen && (
-        <div className="sm:hidden bg-[#FAF8F5] border-b-2 border-brand-black px-4 pt-3 pb-6 flex flex-col gap-3 font-bold text-brand-black">
-          <a href="#beneficios" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">✨ Beneficios Clave</a>
-          <a href="#marcas" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">🤝 6 Marcas Confirmadas</a>
-          <a href="#temario" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">📚 Los 6 Pilares del Workshop</a>
-          <a href="#experiencia" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">📍 Experiencia Hotel Costanero</a>
-          <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">❓ Preguntas Frecuentes</a>
+        <div className="sm:hidden bg-[#FAF8F5] border-b-2 border-brand-black px-4 pt-3 pb-6 flex flex-col gap-3 font-display font-extrabold text-brand-black">
+          <a href="#beneficios" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">✨ Beneficios</a>
+          <a href="#marcas" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">🤝 Marcas</a>
+          <a href="#temario" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">📚 Temario</a>
+          <a href="#lugar" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">📍 Lugar</a>
+          <a href="#faq" onClick={() => setMobileMenuOpen(false)} className="py-2 border-b border-zinc-200">❓ Preguntas</a>
           
           <button
             onClick={() => {
               setMobileMenuOpen(false);
               handleCtaClick();
             }}
-            className="w-full mt-2 py-3 rounded-xl bg-brand-pink text-white font-black text-center border-2 border-brand-black shadow-[3px_3px_0px_#0F0F12]"
+            className="w-full mt-2 py-3 rounded-xl bg-brand-pink text-white font-display font-black text-center border-2 border-brand-black shadow-[3px_3px_0px_#0F0F12]"
           >
             Asegurar Mi Cupo · USD 90
           </button>

@@ -24,7 +24,7 @@ export default {
         }
       },
       fontFamily: {
-        sans: ['"League Spartan"', '"Plus Jakarta Sans"', 'system-ui', 'sans-serif'],
+        sans: ['"Plus Jakarta Sans"', 'Inter', 'system-ui', 'sans-serif'],
         display: ['"League Spartan"', '"Plus Jakarta Sans"', 'sans-serif'],
         hand: ['Caveat', 'cursive'],
         editorial: ['"Playfair Display"', 'serif'],

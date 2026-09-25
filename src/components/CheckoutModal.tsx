@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { X, MessageCircle, CreditCard, Building, Check, Sparkles, ShieldCheck, Copy, User, Mail, Phone, AtSign, ArrowRight } from 'lucide-react';
+import { X, MessageCircle, CreditCard, Building, Check, Sparkles, ShieldCheck, Copy, User, Mail, Phone, AtSign, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { triggerCenterBlast, triggerSparkleConfetti } from '../utils/confetti';
 import { saveLead } from '../services/leadService';
 
@@ -13,7 +13,7 @@ interface CheckoutModalProps {
 export const CheckoutModal: React.FC<CheckoutModalProps> = ({
   isOpen,
   onClose,
-  defaultWhatsAppNumber = '59899000000',
+  defaultWhatsAppNumber = '59895970988',
   defaultMercadoPagoUrl = 'https://link.mercadopago.com.uy/soymariab',
 }) => {
   const [formData, setFormData] = useState({
@@ -25,7 +25,9 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
   const [errors, setErrors] = useState<Record<string, string>>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [copiedBank, setCopiedBank] = useState(false);
+  const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const [showBankDetails, setShowBankDetails] = useState(false);
+  const [bankCurrency, setBankCurrency] = useState<'USD' | 'UYU'>('USD');
 
   if (!isOpen) return null;
 
@@ -88,10 +90,10 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
     window.open(defaultMercadoPagoUrl, '_blank');
   };
 
-  const copyBankInfo = () => {
-    navigator.clipboard.writeText("BROU Caja de Ahorro USD: 001234567-00001 (Titular: María B)");
-    setCopiedBank(true);
-    setTimeout(() => setCopiedBank(false), 2500);
+  const copyToClipboard = (text: string, key: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedKey(key);
+    setTimeout(() => setCopiedKey(null), 2500);
   };
 
   return (
@@ -109,7 +111,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
         {/* Modal Header */}
         <div className="text-center mb-6">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-pink text-white font-extrabold text-xs uppercase mb-2 border border-brand-black">
+          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-pink text-white font-display font-black text-xs uppercase mb-2 border border-brand-black">
             <Sparkles className="w-3.5 h-3.5 fill-brand-yellow text-brand-yellow" />
             <span>Paso 1: Tu Acreditación VIP</span>
           </div>
@@ -134,7 +136,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           
           {/* Full Name */}
           <div>
-            <label className="block text-xs font-extrabold text-brand-black uppercase tracking-wider mb-1">
+            <label className="block text-xs font-display font-black text-brand-black uppercase tracking-wider mb-1">
               Nombre y Apellido *
             </label>
             <div className="relative">
@@ -154,7 +156,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
 
           {/* Email */}
           <div>
-            <label className="block text-xs font-extrabold text-brand-black uppercase tracking-wider mb-1">
+            <label className="block text-xs font-display font-black text-brand-black uppercase tracking-wider mb-1">
               Correo Electrónico *
             </label>
             <div className="relative">
@@ -175,7 +177,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
           {/* WhatsApp / Phone & Instagram (2 columns on tablet/desktop) */}
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div>
-              <label className="block text-xs font-extrabold text-brand-black uppercase tracking-wider mb-1">
+              <label className="block text-xs font-display font-black text-brand-black uppercase tracking-wider mb-1">
                 WhatsApp / Celular *
               </label>
               <div className="relative">
@@ -184,7 +186,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                 </div>
                 <input
                   type="tel"
-                  placeholder="+598 99 123 456"
+                  placeholder="+598 95 970 988"
                   value={formData.phone}
                   onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                   className={`w-full pl-9 pr-3 py-2.5 rounded-xl border-2 font-medium text-xs sm:text-sm bg-zinc-50 focus:bg-white focus:outline-none transition-colors ${errors.phone ? 'border-rose-500 bg-rose-50' : 'border-brand-black focus:border-brand-pink'}`}
@@ -194,7 +196,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             </div>
 
             <div>
-              <label className="block text-xs font-extrabold text-brand-black uppercase tracking-wider mb-1">
+              <label className="block text-xs font-display font-black text-brand-black uppercase tracking-wider mb-1">
                 Usuario de Instagram *
               </label>
               <div className="relative">
@@ -238,7 +240,7 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
                   </span>
                 </div>
                 <p className="text-[11px] text-emerald-100 font-medium">
-                  Coordina tu reserva directa con María (BROU / Prex / Itaú).
+                  Coordina tu reserva directa con María (+598 95 970 988).
                 </p>
               </div>
             </div>
@@ -267,21 +269,124 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
             <ArrowRight className="w-4 h-4 text-white group-hover:translate-x-1 transition-transform" />
           </button>
 
-          {/* Direct Bank Transfer helper */}
-          <div className="bg-zinc-50 border-2 border-zinc-300 rounded-2xl p-3">
-            <div className="flex items-center justify-between">
-              <div className="flex items-center gap-1.5 text-xs font-bold text-brand-black">
-                <Building className="w-3.5 h-3.5 text-zinc-500" />
-                <span>Datos bancarios (BROU / Prex)</span>
+          {/* Bank Transfer Accordion (Santander UYU & USD) */}
+          <div className="bg-zinc-50 border-2 border-zinc-300 rounded-2xl p-3.5 transition-all">
+            <button
+              onClick={() => setShowBankDetails(!showBankDetails)}
+              className="w-full flex items-center justify-between text-left"
+            >
+              <div className="flex items-center gap-2">
+                <Building className="w-4 h-4 text-brand-pink" />
+                <span className="font-display font-black text-xs text-brand-black">
+                  Transferencia Banco Santander (UYU / USD)
+                </span>
               </div>
-              <button
-                onClick={copyBankInfo}
-                className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-pink hover:underline"
-              >
-                {copiedBank ? <Check className="w-3.5 h-3.5 text-emerald-600" /> : <Copy className="w-3.5 h-3.5" />}
-                <span>{copiedBank ? '¡Copiado!' : 'Copiar BROU'}</span>
-              </button>
-            </div>
+              <div className="flex items-center gap-1 text-[11px] font-bold text-brand-pink">
+                <span>{showBankDetails ? 'Ocultar' : 'Ver cuentas'}</span>
+                {showBankDetails ? <ChevronUp className="w-3.5 h-3.5" /> : <ChevronDown className="w-3.5 h-3.5" />}
+              </div>
+            </button>
+
+            {showBankDetails && (
+              <div className="mt-3 pt-3 border-t border-zinc-200 animate-in fade-in duration-200">
+                
+                {/* Currency Tabs */}
+                <div className="flex gap-2 mb-3">
+                  <button
+                    onClick={() => setBankCurrency('USD')}
+                    className={`flex-1 py-1.5 px-3 rounded-lg font-display font-black text-xs border transition-colors ${bankCurrency === 'USD' ? 'bg-brand-black text-brand-yellow border-brand-black' : 'bg-white text-zinc-600 border-zinc-300'}`}
+                  >
+                    Cuenta en Dólares (USD)
+                  </button>
+                  <button
+                    onClick={() => setBankCurrency('UYU')}
+                    className={`flex-1 py-1.5 px-3 rounded-lg font-display font-black text-xs border transition-colors ${bankCurrency === 'UYU' ? 'bg-brand-black text-brand-yellow border-brand-black' : 'bg-white text-zinc-600 border-zinc-300'}`}
+                  >
+                    Cuenta en Pesos (UYU)
+                  </button>
+                </div>
+
+                {bankCurrency === 'USD' ? (
+                  <div className="space-y-2 text-xs text-zinc-700 bg-white p-3 rounded-xl border border-zinc-200">
+                    <div className="font-display font-extrabold text-brand-black border-b pb-1 flex justify-between items-center">
+                      <span>Santander · Cuenta USD</span>
+                      <span className="text-[10px] text-zinc-400 font-mono">Sucursal: 60 - Puerto Del Buceo</span>
+                    </div>
+
+                    {/* Dentro de Santander USD */}
+                    <div className="flex items-center justify-between pt-1">
+                      <div>
+                        <span className="text-[10px] text-zinc-500 font-semibold block">Dentro de Santander:</span>
+                        <span className="font-mono font-bold text-xs text-brand-black">5207717616</span>
+                      </div>
+                      <button
+                        onClick={() => copyToClipboard('5207717616', 'santander-usd')}
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-pink bg-brand-pink-pale px-2 py-1 rounded border border-brand-pink/30 hover:bg-brand-pink hover:text-white transition-colors"
+                      >
+                        {copiedKey === 'santander-usd' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                        <span>{copiedKey === 'santander-usd' ? 'Copiado' : 'Copiar'}</span>
+                      </button>
+                    </div>
+
+                    {/* Desde otros bancos USD */}
+                    <div className="flex items-center justify-between pt-1.5 border-t border-zinc-100">
+                      <div>
+                        <span className="text-[10px] text-zinc-500 font-semibold block">Desde otros bancos (BROU/Itaú/etc):</span>
+                        <span className="font-mono font-bold text-xs text-brand-black">0060005207717616</span>
+                      </div>
+                      <button
+                        onClick={() => copyToClipboard('0060005207717616', 'otros-usd')}
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-pink bg-brand-pink-pale px-2 py-1 rounded border border-brand-pink/30 hover:bg-brand-pink hover:text-white transition-colors"
+                      >
+                        {copiedKey === 'otros-usd' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                        <span>{copiedKey === 'otros-usd' ? 'Copiado' : 'Copiar'}</span>
+                      </button>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="space-y-2 text-xs text-zinc-700 bg-white p-3 rounded-xl border border-zinc-200">
+                    <div className="font-display font-extrabold text-brand-black border-b pb-1 flex justify-between items-center">
+                      <span>Santander · Cuenta Pesos (UYU)</span>
+                      <span className="text-[10px] text-zinc-400 font-mono">Sucursal: 60 - Puerto Del Buceo</span>
+                    </div>
+
+                    {/* Dentro de Santander UYU */}
+                    <div className="flex items-center justify-between pt-1">
+                      <div>
+                        <span className="text-[10px] text-zinc-500 font-semibold block">Dentro de Santander:</span>
+                        <span className="font-mono font-bold text-xs text-brand-black">1207559276</span>
+                      </div>
+                      <button
+                        onClick={() => copyToClipboard('1207559276', 'santander-uyu')}
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-pink bg-brand-pink-pale px-2 py-1 rounded border border-brand-pink/30 hover:bg-brand-pink hover:text-white transition-colors"
+                      >
+                        {copiedKey === 'santander-uyu' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                        <span>{copiedKey === 'santander-uyu' ? 'Copiado' : 'Copiar'}</span>
+                      </button>
+                    </div>
+
+                    {/* Desde otros bancos UYU */}
+                    <div className="flex items-center justify-between pt-1.5 border-t border-zinc-100">
+                      <div>
+                        <span className="text-[10px] text-zinc-500 font-semibold block">Desde otros bancos:</span>
+                        <span className="font-mono font-bold text-xs text-brand-black">0060001207559276</span>
+                      </div>
+                      <button
+                        onClick={() => copyToClipboard('0060001207559276', 'otros-uyu')}
+                        className="inline-flex items-center gap-1 text-[11px] font-bold text-brand-pink bg-brand-pink-pale px-2 py-1 rounded border border-brand-pink/30 hover:bg-brand-pink hover:text-white transition-colors"
+                      >
+                        {copiedKey === 'otros-uyu' ? <Check className="w-3 h-3 text-emerald-600" /> : <Copy className="w-3 h-3" />}
+                        <span>{copiedKey === 'otros-uyu' ? 'Copiado' : 'Copiar'}</span>
+                      </button>
+                    </div>
+                  </div>
+                )}
+
+                <p className="text-[10px] text-zinc-500 mt-2 text-center font-medium">
+                  Una vez realizada la transferencia, envía el comprobante por WhatsApp para validar tu lugar.
+                </p>
+              </div>
+            )}
           </div>
 
         </div>

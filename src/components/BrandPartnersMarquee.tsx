@@ -110,9 +110,11 @@ export const BrandPartnersMarquee: React.FC = () => {
                   </p>
                 </div>
 
-                <div className="mt-3 pt-2 border-t border-zinc-800/80 inline-flex items-center justify-center gap-1 text-[9px] uppercase font-bold text-emerald-400 bg-emerald-500/10 px-2 py-0.5 rounded-full">
-                  <CheckCircle className="w-2.5 h-2.5 text-emerald-400" />
-                  Confirmada
+                <div className="mt-3 pt-2.5 border-t border-zinc-800/80 flex items-center justify-center w-full">
+                  <span className="inline-flex items-center justify-center gap-1.5 text-[9px] uppercase font-bold tracking-wider text-emerald-400 bg-emerald-950/70 border border-emerald-500/30 px-3 py-1 rounded-full leading-none text-center">
+                    <CheckCircle className="w-3 h-3 text-emerald-400 shrink-0" />
+                    <span>Confirmada</span>
+                  </span>
                 </div>
               </div>
             </div>

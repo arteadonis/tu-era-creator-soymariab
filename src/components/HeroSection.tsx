@@ -34,7 +34,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onOpenW
               <span className="text-brand-black">·</span>
               <span className="text-brand-black">HOTEL COSTANERO DE MONTEVIDEO</span>
               <span className="text-brand-black">·</span>
-              <span>24 DE OCTUBRE</span>
+              <span>SÁBADO 24 DE OCTUBRE</span>
               <span className="text-brand-black">·</span>
               <span className="text-brand-black">6 MARCAS CONFIRMADAS</span>
               <span className="text-brand-black">·</span>
@@ -114,7 +114,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onOpenW
               </div>
               <div className="bg-white border-2 border-brand-black rounded-xl p-2.5 flex items-center gap-2 shadow-[2px_2px_0px_#0F0F12]">
                 <Calendar className="w-4 h-4 text-brand-pink shrink-0" />
-                <span>24 de Octubre</span>
+                <span>Sábado 24 de Octubre</span>
               </div>
               <div className="col-span-2 sm:col-span-1 bg-white border-2 border-brand-black rounded-xl p-2.5 flex items-center gap-2 shadow-[2px_2px_0px_#0F0F12]">
                 <Clock className="w-4 h-4 text-brand-pink shrink-0" />
@@ -177,7 +177,7 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onOpenW
               </span>
               <span className="flex items-center gap-1">
                 <CheckCircle2 className="w-4 h-4 text-emerald-600" />
-                Factura & comprobante instantáneo
+                Entrada enviada por Email
               </span>
             </div>
 

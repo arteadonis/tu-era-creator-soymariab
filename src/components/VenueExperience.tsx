@@ -5,7 +5,7 @@ export const VenueExperience: React.FC = () => {
   return (
     <section id="lugar" className="py-16 sm:py-24 bg-[#FAF8F5] relative overflow-hidden border-t-3 border-brand-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-brand-yellow border-2 border-brand-black text-brand-black font-extrabold text-xs uppercase tracking-wider mb-4 shadow-[2px_2px_0px_#0F0F12]">
@@ -25,7 +25,7 @@ export const VenueExperience: React.FC = () => {
 
         {/* Venue Highlights Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center max-w-5xl mx-auto">
-          
+
           {/* Left: Venue Details Card */}
           <div className="lg:col-span-7 bg-white rounded-3xl border-3 border-brand-black p-6 sm:p-8 shadow-[6px_7px_0px_#0F0F12]">
             <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-zinc-200">
@@ -55,15 +55,15 @@ export const VenueExperience: React.FC = () => {
                 <Users className="w-5 h-5 text-brand-pink shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-sm text-brand-black">Cupo Íntimo de 15</h4>
-                  <p className="text-xs text-zinc-600 mt-0.5">Espacio reducido para que María te dé feedback directo de tus videos.</p>
+                  <p className="text-xs text-zinc-600 mt-0.5">Espacio reducido para que María te dé feedback directo.</p>
                 </div>
               </div>
 
               <div className="bg-[#FAF8F5] p-4 rounded-2xl border-2 border-brand-black/20 flex items-start gap-3">
                 <Camera className="w-5 h-5 text-brand-pink shrink-0 mt-0.5" />
                 <div>
-                  <h4 className="font-bold text-sm text-brand-black">Práctica y Grabación</h4>
-                  <p className="text-xs text-zinc-600 mt-0.5">Grabaremos en vivo en el salón aprovechando la luz natural de la Rambla.</p>
+                  <h4 className="font-bold text-sm text-brand-black">Dinámicas en vivo</h4>
+                  <p className="text-xs text-zinc-600 mt-0.5">Tendremos diferentes actividades practicas durante todo el workshop.</p>
                 </div>
               </div>
 
@@ -78,7 +78,7 @@ export const VenueExperience: React.FC = () => {
 
             <div className="bg-brand-yellow/60 border-2 border-brand-black rounded-xl p-3 flex items-center justify-between text-xs font-black text-brand-black">
               <span className="flex items-center gap-1.5">
-                <Calendar className="w-4 h-4 text-brand-pink" /> 24 de Octubre de 2024
+                <Calendar className="w-4 h-4 text-brand-pink" /> Sábado 24 de Octubre
               </span>
               <span className="flex items-center gap-1.5">
                 <Clock className="w-4 h-4 text-brand-pink" /> 13:00 a 17:00 h
@@ -90,7 +90,7 @@ export const VenueExperience: React.FC = () => {
           <div className="lg:col-span-5 flex flex-col gap-4">
             <div className="bg-brand-black text-white rounded-3xl border-3 border-brand-black p-6 shadow-[6px_7px_0px_#FF2E93] relative overflow-hidden">
               <div className="absolute top-0 right-0 w-32 h-32 bg-brand-pink/30 rounded-full blur-2xl" />
-              
+
               <div className="text-3xl mb-3">📍🏨</div>
               <h4 className="font-display font-black text-xl text-brand-yellow uppercase tracking-wide mb-2">
                 Ubicación Inmejorable

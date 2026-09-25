@@ -20,7 +20,7 @@ const FAQS = [
   },
   {
     q: '¿Dónde es exactamente y en qué horario?',
-    a: 'Nos encontramos en el Hotel Costanero MGallery, sobre la Rambla República del Perú 1371 (frente a las letras de Montevideo, Pocitos). La jornada es el 24 de Octubre de 13:00 a 17:00 h.'
+    a: 'Nos encontramos en el Hotel Costanero MGallery, sobre la Rambla República del Perú 1371 (frente a las letras de Montevideo, Pocitos). La jornada es el Sábado 24 de Octubre de 13:00 a 17:00 h.'
   },
   {
     q: '¿Por qué el cupo es solo para 15 personas?',

@@ -9,7 +9,7 @@ export const TheGoldenHook: React.FC<TheGoldenHookProps> = ({ onOpenBooking }) =
   return (
     <section id="beneficios" className="py-16 sm:py-24 bg-brand-cream relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Section Title */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-brand-yellow border-2 border-brand-black text-brand-black font-extrabold text-xs uppercase tracking-wider mb-4 shadow-[2px_2px_0px_#0F0F12]">
@@ -29,7 +29,7 @@ export const TheGoldenHook: React.FC<TheGoldenHookProps> = ({ onOpenBooking }) =
 
         {/* Comparison Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto mb-12">
-          
+
           {/* Card 1: La Vía Común y Frustrante */}
           <div className="bg-white rounded-3xl border-3 border-brand-black p-6 sm:p-8 shadow-[6px_6px_0px_#0F0F12] relative flex flex-col justify-between">
             <div>
@@ -66,7 +66,7 @@ export const TheGoldenHook: React.FC<TheGoldenHookProps> = ({ onOpenBooking }) =
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-rose-500 font-black text-lg leading-none">✕</span>
-                  <span>No tener un tarifario claro ni saber negociar derechos de imagen en dólares.</span>
+                  <span>No tener un tarifario claro ni saber negociar derechos de imagen.</span>
                 </li>
                 <li className="flex items-start gap-3">
                   <span className="text-rose-500 font-black text-lg leading-none">✕</span>

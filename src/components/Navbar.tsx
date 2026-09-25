@@ -54,7 +54,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onOpenBooking }) => {
         {/* Event Date Pill & Quick CTA */}
         <div className="hidden sm:flex items-center gap-3">
           <div className="hidden xl:flex flex-col text-right">
-            <span className="text-[11px] font-black uppercase text-brand-pink tracking-wider">24 OCTUBRE · MONTEVIDEO</span>
+            <span className="text-[11px] font-black uppercase text-brand-pink tracking-wider">SÁBADO 24 OCTUBRE · MONTEVIDEO</span>
             <span className="text-xs font-bold text-zinc-600">13:00 a 17:00 h</span>
           </div>
 

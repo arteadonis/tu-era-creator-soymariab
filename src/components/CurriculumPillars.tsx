@@ -8,7 +8,7 @@ const PILLARS = [
     title: 'Creación de Contenido',
     badge: '📱 Producción con Smartphone',
     desc: 'Cómo dominar la cámara de tu celular, iluminación natural y de aro, ángulos favorecedores y composición para que tus videos se vean con calidad de estudio sin comprar equipos caros.',
-    bullets: ['Ajustes secretos de cámara en iPhone y Android', 'Iluminación profesional con lo que ya tienes', 'Audio nítido y microfonía práctica', 'Edición rápida en CapCut en menos de 15 minutos']
+    bullets: ['Ajustes secretos de cámara en el smartphone', 'Iluminación profesional con lo que ya tienes', 'Edición rápida en CapCut en menos de 15 minutos']
   },
   {
     id: '02',
@@ -24,7 +24,7 @@ const PILLARS = [
     title: 'Estrategias para Crecer en Redes',
     badge: '📈 Algoritmo 2024-2026',
     desc: 'Deja de depender de la suerte o de que un reel se viralice por accidente. Entiende cómo funcionan las métricas de retención, ganchos (hooks) y llamados a la acción efectivos.',
-    bullets: ['Estructura de guion que retiene más del 70% del video', 'Cómo interpretar tus estadísticas para escalar', 'Estrategias de interacción y posicionamiento en buscadores (SEO para Instagram)', 'Plan de publicación sostenible sin burnout']
+    bullets: ['Estructura de guion que retiene más del 70% del video', 'Cómo interpretar tus estadísticas para escalar', 'Plan de publicación sostenible sin burnout']
   },
   {
     id: '04',
@@ -32,7 +32,7 @@ const PILLARS = [
     title: 'Ideas y Herramientas Creator',
     badge: '🎥 Flujo de Trabajo Ágil',
     desc: 'El sistema probado para nunca quedarte en blanco frente a la cámara. Banco de ideas infinitas, uso de IA para guiones y las mejores apps que usan los creadores top.',
-    bullets: ['Sistema de Notion para organizar tus grabaciones', 'Prompts de ChatGPT específicos para ideas de reels', 'Música y audios en tendencia antes de que exploten', 'Plantillas de guiones de alta conversión']
+    bullets: ['Prompts de ChatGPT específicos para ideas de reels', 'Música y audios en tendencia antes de que exploten', 'Plantillas de guiones de alta conversión']
   },
   {
     id: '05',
@@ -48,7 +48,7 @@ const PILLARS = [
     title: 'Tu 1ra Colaboración por Intercambio',
     badge: '🎁 Asignación en Vivo',
     desc: 'No saldrás de aquí con solo teoría. En esta sesión práctica trabajarás directamente con los briefs de las 6 marcas confirmadas para realizar tu primera colaboración real por intercambio de producto.',
-    bullets: ['Asignación de brief de marca confirmada en el salón', 'Dinámica en vivo de creación y entrega de contenido', 'Cómo convertir un intercambio en una relación a largo plazo', 'Plan de acción para tus siguientes colaboraciones']
+    bullets: ['Asignación de brief de marca confirmada en el salón', 'Dinámica en vivo', 'Cómo convertir un intercambio en una relación a largo plazo', 'Plan de acción para tus siguientes colaboraciones']
   },
 ];
 
@@ -60,7 +60,7 @@ export const CurriculumPillars: React.FC = () => {
       <div className="absolute bottom-0 left-0 w-72 h-72 bg-brand-pink/15 rounded-full blur-3xl pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        
+
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-brand-pink text-white font-extrabold text-xs uppercase tracking-wider mb-4 border-2 border-brand-black shadow-[2px_2px_0px_#0F0F12]">
@@ -134,11 +134,8 @@ export const CurriculumPillars: React.FC = () => {
                 Y MUCHO MÁS · ADEMÁS......
               </span>
               <h4 className="font-display font-black text-xl sm:text-2xl text-white">
-                Kit de Bienvenida Físico + Plantillas de Contratos y Tarifarios
+                Recibirás tu kit de bienvenida
               </h4>
-              <p className="text-xs sm:text-sm text-zinc-400 mt-1">
-                Todas las herramientas legales y comerciales listas para usar en tu celular.
-              </p>
             </div>
           </div>
 

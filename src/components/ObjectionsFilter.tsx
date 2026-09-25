@@ -5,7 +5,7 @@ export const ObjectionsFilter: React.FC = () => {
   return (
     <section className="py-16 sm:py-24 bg-white relative overflow-hidden border-t-3 border-brand-black">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        
+
         {/* Header */}
         <div className="text-center max-w-3xl mx-auto mb-14">
           <div className="inline-flex items-center gap-1.5 px-4 py-1 rounded-full bg-brand-yellow border-2 border-brand-black text-brand-black font-extrabold text-xs uppercase tracking-wider mb-4 shadow-[2px_2px_0px_#0F0F12]">
@@ -25,7 +25,7 @@ export const ObjectionsFilter: React.FC = () => {
 
         {/* 2 Column Cards */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-          
+
           {/* SÍ ES PARA TI */}
           <div className="bg-emerald-50/70 rounded-3xl border-3 border-emerald-600 p-6 sm:p-8 shadow-[6px_7px_0px_#059669]">
             <div className="flex items-center gap-3 mb-6 pb-4 border-b-2 border-emerald-200">
@@ -49,7 +49,7 @@ export const ObjectionsFilter: React.FC = () => {
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
-                <span>Estás cansada de los canjes y quieres aprender a negociar y tarifar tus acuerdos en USD.</span>
+                <span>Estás cansada de los canjes y quieres aprender a negociar y tarifar tus acuerdos.</span>
               </li>
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
@@ -58,6 +58,10 @@ export const ObjectionsFilter: React.FC = () => {
               <li className="flex items-start gap-3">
                 <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
                 <span>Quieres salir con tu primera colaboración real garantizada con marcas del medio.</span>
+              </li>
+              <li className="flex items-start gap-3">
+                <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                <span>Si tienes un emprendiemiento/negocio y quieres potenciar sus redes sociales tu misma</span>
               </li>
             </ul>
           </div>
@@ -89,7 +93,7 @@ export const ObjectionsFilter: React.FC = () => {
               </li>
               <li className="flex items-start gap-3">
                 <XCircle className="w-5 h-5 text-rose-600 shrink-0 mt-0.5" />
-                <span>No puedes asistir presencialmente a Montevideo el 24 de Octubre de 13:00 a 17:00 h.</span>
+                <span>No puedes asistir presencialmente a Montevideo el Sábado 24 de Octubre de 13:00 a 17:00 h.</span>
               </li>
             </ul>
           </div>

@@ -1,0 +1,77 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: 'League Spartan';
+  src: url('/assets/LeagueSpartan-Bold.otf') format('opentype');
+  font-weight: 700 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  body {
+    background-color: #FAF8F5;
+    color: #0F0F12;
+    font-family: 'League Spartan', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+}
+
+@layer utilities {
+  .sticker-border {
+    border: 3px solid #0F0F12;
+    box-shadow: 4px 5px 0px #0F0F12;
+  }
+
+  .sticker-border-sm {
+    border: 2px solid #0F0F12;
+    box-shadow: 3px 3px 0px #0F0F12;
+  }
+
+  .sticker-border-pink {
+    border: 3px solid #FF2E93;
+    box-shadow: 4px 5px 0px #FF2E93;
+  }
+
+  .sticker-border-white {
+    border: 3px solid #FFFFFF;
+    box-shadow: 4px 6px 0px rgba(0,0,0,0.18);
+  }
+
+  .glass-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(14px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .glass-card-dark {
+    background: rgba(22, 22, 27, 0.85);
+    backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .text-glow-pink {
+    text-shadow: 0 0 20px rgba(255, 46, 147, 0.5);
+  }
+}
+
+/* Custom smooth scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #FAF8F5;
+}
+::-webkit-scrollbar-thumb {
+  background: #FF70B8;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #FF2E93;
+}

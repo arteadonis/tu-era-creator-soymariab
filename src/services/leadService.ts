@@ -11,8 +11,10 @@ export interface LeadData {
 
 const STORAGE_KEY = 'soymariab_workshop_leads';
 
-// Optional Webhook endpoint (Google Sheets Apps Script, Zapier, Make, or custom API)
-export const WEBHOOK_URL = import.meta.env.VITE_LEADS_WEBHOOK_URL || '';
+// Google Sheets Webhook endpoint (Google Apps Script en tiempo real)
+export const WEBHOOK_URL =
+  import.meta.env.VITE_LEADS_WEBHOOK_URL ||
+  'https://script.google.com/macros/s/AKfycbzV6gZ1sLbVSqQnSTfZg1J11CqE3fVhxyVFAh_vvkCGpKSP-TBaYe64hj11POm2RaDBAQ/exec';
 
 export const saveLead = async (lead: Omit<LeadData, 'id' | 'createdAt'>): Promise<LeadData> => {
   const newLead: LeadData = {

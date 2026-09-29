@@ -55,6 +55,20 @@ export const saveLead = async (lead: Omit<LeadData, 'id' | 'createdAt'>): Promis
     }
   }
 
+  // 3. Dispatch GA4 conversion event if gtag is present
+  try {
+    if (typeof window !== 'undefined' && (window as any).gtag) {
+      (window as any).gtag('event', 'generate_lead', {
+        currency: 'USD',
+        value: 90,
+        payment_method: newLead.paymentMethod,
+        event_label: 'Workshop Tu era Creator',
+      });
+    }
+  } catch (err) {
+    console.warn('GA4 lead event dispatch failed', err);
+  }
+
   return newLead;
 };
 

@@ -66,7 +66,7 @@ export const PricingPass: React.FC<PricingPassProps> = ({
 
             <div className="bg-brand-pink/20 border border-brand-pink/50 px-3.5 py-1.5 rounded-full inline-flex items-center gap-1.5 self-start sm:self-center">
               <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
-              <span className="text-xs font-bold text-brand-pink-light">Solo 4 cupos restantes</span>
+              <span className="text-xs font-bold text-brand-pink-light">¡Últimos cupos disponibles!</span>
             </div>
           </div>
 

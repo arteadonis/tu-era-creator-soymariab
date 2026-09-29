@@ -26,7 +26,7 @@ export const StickyMobileBar: React.FC<StickyMobileBarProps> = ({ onOpenBooking 
           </div>
           <div className="flex items-baseline gap-1">
             <span className="font-display font-black text-xl text-brand-black">USD 90</span>
-            <span className="text-[10px] font-bold text-zinc-500">· 4 cupos</span>
+            <span className="text-[10px] font-bold text-zinc-500">· Últimos cupos</span>
           </div>
         </div>
 

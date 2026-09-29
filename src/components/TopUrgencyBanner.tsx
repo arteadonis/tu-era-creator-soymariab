@@ -30,7 +30,7 @@ export const TopUrgencyBanner: React.FC = () => {
           </span>
           <span className="text-zinc-200">
             Edición exclusiva limitada a <strong className="text-brand-yellow font-black">15 creadoras</strong> · 
-            <span className="text-brand-pink-light ml-1 font-bold">¡Quedan solo 4 lugares con USD 100 OFF!</span>
+            <span className="text-brand-pink-light ml-1 font-bold">¡Últimos cupos disponibles con USD 100 OFF!</span>
           </span>
         </div>
 

@@ -142,10 +142,10 @@ export const HeroSection: React.FC<HeroSectionProps> = ({ onOpenBooking, onOpenW
               <div className="text-left text-xs sm:text-sm text-zinc-700">
                 <div className="flex items-center gap-1.5 font-extrabold text-brand-black">
                   <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                  Cupo íntimo: 11 / 15 confirmados
+                  Cupo exclusivo: Grupo reducido
                 </div>
                 <p className="text-zinc-500 text-xs">
-                  Precio especial habilitado para los últimos 4 lugares.
+                  Precio especial habilitado para los últimos cupos disponibles.
                 </p>
               </div>
             </div>

@@ -31,9 +31,14 @@ export function App() {
   const WHATSAPP_NUMBER = '59895970988';
   const MERCADO_PAGO_URL = 'https://mpago.la/2qoASSL';
 
-  // Generic direct WhatsApp link (if triggered before filling form, opens modal first to capture lead)
   const handleOpenBooking = () => {
     setIsModalOpen(true);
+  };
+
+  // Direct WhatsApp chat for no-pressure questions and warm conversation
+  const handleOpenWhatsAppChat = (customMessage?: string) => {
+    const text = customMessage || '¡Hola María! 💖 Vi la info del workshop "Tu era Creator" en el Hotel Costanero y quería hacerte una consulta.';
+    window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };
 
   return (
@@ -49,7 +54,7 @@ export function App() {
         {/* 3. Hero Section with sticker badges & Maria's photo cutout */}
         <HeroSection
           onOpenBooking={handleOpenBooking}
-          onOpenWhatsApp={handleOpenBooking}
+          onOpenWhatsApp={() => handleOpenWhatsAppChat('¡Hola María! 💖 Vi la info del workshop "Tu era Creator" en el Hotel Costanero y quería hacerte una consulta.')}
         />
 
         {/* 4. 6 Confirmed Brand Partners */}
@@ -76,12 +81,12 @@ export function App() {
         {/* 11. Main Pricing & VIP All-Access Ticket */}
         <PricingPass
           onOpenBooking={handleOpenBooking}
-          onOpenWhatsApp={handleOpenBooking}
+          onOpenWhatsApp={() => handleOpenWhatsAppChat('¡Hola María! 💖 Quiero consultar y coordinar mi lugar para el workshop "Tu era Creator" en el Hotel Costanero.')}
           onOpenMercadoPago={handleOpenBooking}
         />
 
         {/* 12. Dynamic FAQ Accordion */}
-        <FaqAccordion onOpenWhatsApp={handleOpenBooking} />
+        <FaqAccordion onOpenWhatsApp={() => handleOpenWhatsAppChat('¡Hola María! 💖 Tengo unas dudas sobre el workshop "Tu era Creator" y quería consultarte.')} />
       </main>
 
       {/* 13. Footer with copyright & credits */}

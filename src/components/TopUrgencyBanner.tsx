@@ -2,17 +2,34 @@ import React, { useState, useEffect } from 'react';
 import { MapPin, Flame } from 'lucide-react';
 
 export const TopUrgencyBanner: React.FC = () => {
-  const [timeLeft, setTimeLeft] = useState({ days: 28, hours: 14, minutes: 35, seconds: 20 });
+  // Event is Saturday, October 24 at 13:00 h
+  const calculateTimeLeft = () => {
+    const now = new Date();
+    const currentYear = now.getFullYear();
+    let target = new Date(currentYear, 9, 24, 13, 0, 0); // Month 9 = October
+
+    if (now.getTime() > target.getTime()) {
+      target = new Date(currentYear + 1, 9, 24, 13, 0, 0);
+    }
+
+    const diff = target.getTime() - now.getTime();
+    if (diff <= 0) {
+      return { days: 0, hours: 0, minutes: 0, seconds: 0 };
+    }
+
+    return {
+      days: Math.floor(diff / (1000 * 60 * 60 * 24)),
+      hours: Math.floor((diff / (1000 * 60 * 60)) % 24),
+      minutes: Math.floor((diff / 1000 / 60) % 60),
+      seconds: Math.floor((diff / 1000) % 60),
+    };
+  };
+
+  const [timeLeft, setTimeLeft] = useState(calculateTimeLeft);
 
   useEffect(() => {
     const timer = setInterval(() => {
-      setTimeLeft(prev => {
-        if (prev.seconds > 0) return { ...prev, seconds: prev.seconds - 1 };
-        if (prev.minutes > 0) return { ...prev, minutes: 59, seconds: 59 };
-        if (prev.hours > 0) return { ...prev, hours: prev.hours - 1, minutes: 59, seconds: 59 };
-        if (prev.days > 0) return { ...prev, days: prev.days - 1, hours: 23, minutes: 59, seconds: 59 };
-        return prev;
-      });
+      setTimeLeft(calculateTimeLeft());
     }, 1000);
     return () => clearInterval(timer);
   }, []);

@@ -15,6 +15,7 @@ import { CheckoutModal } from './components/CheckoutModal';
 import { AdminLeadsModal } from './components/AdminLeadsModal';
 import { StickyMobileBar } from './components/StickyMobileBar';
 import { Footer } from './components/Footer';
+import { trackWhatsAppInquiry, trackReserveClick } from './utils/analytics';
 
 export function App() {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -31,12 +32,14 @@ export function App() {
   const WHATSAPP_NUMBER = '59895970988';
   const MERCADO_PAGO_URL = 'https://mpago.la/2qoASSL';
 
-  const handleOpenBooking = () => {
+  const handleOpenBooking = (source: string = 'general') => {
+    trackReserveClick(source);
     setIsModalOpen(true);
   };
 
   // Direct WhatsApp chat for no-pressure questions and warm conversation
-  const handleOpenWhatsAppChat = (customMessage?: string) => {
+  const handleOpenWhatsAppChat = (customMessage?: string, source: string = 'whatsapp_inquiry') => {
+    trackWhatsAppInquiry(source);
     const text = customMessage || '¡Hola María! 💖 Vi la info del workshop "Tu era Creator" en el Hotel Costanero y quería hacerte una consulta.';
     window.open(`https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(text)}`, '_blank');
   };

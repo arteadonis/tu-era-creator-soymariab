@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { X, MessageCircle, CreditCard, Building, Check, Sparkles, ShieldCheck, Copy, User, Mail, Phone, AtSign, ArrowRight, ChevronDown, ChevronUp } from 'lucide-react';
 import { triggerCenterBlast, triggerSparkleConfetti } from '../utils/confetti';
 import { saveLead } from '../services/leadService';
+import { trackLeadSubmission } from '../utils/analytics';
 
 interface CheckoutModalProps {
   isOpen: boolean;
@@ -56,6 +57,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       paymentMethod: 'whatsapp',
     });
 
+    trackLeadSubmission('whatsapp', { fullName: formData.fullName, email: formData.email });
+
     triggerCenterBlast();
     setIsSubmitting(false);
     onClose();
@@ -81,6 +84,8 @@ export const CheckoutModal: React.FC<CheckoutModalProps> = ({
       instagram: cleanIg,
       paymentMethod: 'mercadopago',
     });
+
+    trackLeadSubmission('mercadopago', { fullName: formData.fullName, email: formData.email });
 
     triggerSparkleConfetti();
     setIsSubmitting(false);
